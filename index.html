@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gulf Coast Craftsmanship — Built Right. Built to Last.</title>
+<meta name="description" content="Veteran-owned general contracting serving Southwest Florida. Tile, flooring, remodeling, and custom home builds. Built Right. Built to Last.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* ===== BRAND PALETTE ===== */
+  :root {
+    --ocean-deep:   #1B3A4B;
+    --ocean-mid:    #2E6E8E;
+    --ocean-light:  #5BA3BF;
+    --sand:         #E8D5B0;
+    --sand-dark:    #C8B48A;
+    --terracotta:   #C26B47;
+    --terra-dark:   #9E4E2F;
+    --cream:        #FAF6EE;
+    --white:        #FFFFFF;
+    --text-dark:    #1A1A1A;
+    --text-mid:     #4A4A4A;
+    --text-light:   #7A7A7A;
+    --font-display: 'Playfair Display', Georgia, serif;
+    --font-body:    'DM Sans', system-ui, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* ===== NOISE TEXTURE OVERLAY ===== */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.4;
+  }
+
+  /* ===== NAV ===== */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    padding: 1.2rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(27, 58, 75, 0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(91,163,191,0.2);
+    transition: all 0.3s ease;
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .nav-logo svg { width: 40px; height: 40px; }
+
+  .nav-logo-text {
+    font-family: var(--font-display);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .nav-logo-text span {
+    display: block;
+    font-size: 0.6rem;
+    font-family: var(--font-body);
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-top: 1px;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--sand); }
+
+  .nav-cta {
+    background: var(--terracotta) !important;
+    color: var(--white) !important;
+    padding: 0.6rem 1.4rem !important;
+    border-radius: 2px;
+    transition: background 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--terra-dark) !important; color: var(--white) !important; }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    background: var(--ocean-deep);
+  }
+
+  /* Wave background pattern */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      linear-gradient(160deg, #0d2535 0%, #1B3A4B 40%, #2E6E8E 100%);
+  }
+
+  .hero-wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .hero-pattern {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 55%;
+    height: 100%;
+    opacity: 0.06;
+  }
+
+  /* Tile grid decorative */
+  .tile-grid {
+    position: absolute;
+    bottom: 80px;
+    right: 8%;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+    opacity: 0.15;
+    transform: rotate(-8deg);
+    animation: floatTile 6s ease-in-out infinite;
+  }
+
+  @keyframes floatTile {
+    0%, 100% { transform: rotate(-8deg) translateY(0); }
+    50% { transform: rotate(-8deg) translateY(-12px); }
+  }
+
+  .tile-cell {
+    width: 32px;
+    height: 32px;
+    border: 1.5px solid var(--sand);
+    border-radius: 2px;
+  }
+
+  .tile-cell:nth-child(3n) { background: rgba(232,213,176,0.3); }
+  .tile-cell:nth-child(5n) { background: rgba(194,107,71,0.3); }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 8rem 3rem 6rem;
+    width: 100%;
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--sand);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.8s ease forwards;
+    opacity: 0;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--terracotta);
+  }
+
+  .hero-heading {
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 7vw, 6rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 0.8s ease 0.15s forwards;
+    opacity: 0;
+  }
+
+  .hero-heading em {
+    font-style: italic;
+    color: var(--sand);
+  }
+
+  .hero-sub {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.8rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ocean-light);
+    margin-bottom: 2rem;
+    animation: fadeUp 0.8s ease 0.25s forwards;
+    opacity: 0;
+  }
+
+  .hero-tagline {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.65);
+    letter-spacing: 0.05em;
+    max-width: 500px;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+    animation: fadeUp 0.8s ease 0.35s forwards;
+    opacity: 0;
+  }
+
+  .hero-ctas {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.8s ease 0.45s forwards;
+    opacity: 0;
+  }
+
+  .btn-primary {
+    background: var(--terracotta);
+    color: var(--white);
+    padding: 1rem 2.2rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover {
+    background: var(--terra-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(194,107,71,0.35);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--white);
+    padding: 1rem 2.2rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.35);
+    cursor: pointer;
+    transition: all 0.25s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--sand);
+    color: var(--sand);
+    transform: translateY(-2px);
+  }
+
+  /* Hero wave SVG */
+  .hero-waves {
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+  }
+
+  /* ===== TRUST BAR ===== */
+  .trust-bar {
+    background: var(--white);
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    padding: 1.25rem 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-body);
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-mid);
+  }
+
+  .trust-icon {
+    width: 18px;
+    height: 18px;
+    color: var(--terracotta);
+    flex-shrink: 0;
+  }
+
+  /* ===== SECTIONS ===== */
+  section { padding: 6rem 3rem; }
+
+  .section-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-eyebrow {
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .section-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1.5px;
+    background: var(--terracotta);
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--ocean-deep);
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin-bottom: 1rem;
+  }
+
+  .section-title em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .section-body {
+    font-size: 1rem;
+    color: var(--text-mid);
+    line-height: 1.8;
+    max-width: 580px;
+  }
+
+  /* ===== ABOUT ===== */
+  .about { background: var(--cream); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+    margin-top: 1rem;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card {
+    background: var(--ocean-deep);
+    border-radius: 4px;
+    padding: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 40%, rgba(91,163,191,0.12) 100%);
+  }
+
+  .vet-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--terracotta);
+    color: var(--white);
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.45rem 1rem;
+    border-radius: 2px;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-card-title {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.3;
+    margin-bottom: 1rem;
+  }
+
+  .about-card-title em { font-style: italic; color: var(--sand); }
+
+  .about-card-body {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.75;
+  }
+
+  .about-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: rgba(255,255,255,0.1);
+    margin-top: 2rem;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .stat {
+    background: rgba(0,0,0,0.25);
+    padding: 1.2rem 1rem;
+    text-align: center;
+  }
+
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--sand);
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-top: 2px;
+  }
+
+  .about-content { padding-top: 1rem; }
+
+  .about-content .section-body { margin-bottom: 1.5rem; max-width: 100%; }
+
+  .values-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .values-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: var(--text-mid);
+    line-height: 1.5;
+  }
+
+  .values-list li::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    margin-top: 0.45rem;
+    flex-shrink: 0;
+  }
+
+  /* ===== SERVICES ===== */
+  .services { background: var(--white); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 3rem;
+    background: var(--sand-dark);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .service-card {
+    background: var(--white);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--terracotta);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover { background: var(--cream); }
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+    background: var(--ocean-deep);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    transition: background 0.3s;
+  }
+
+  .service-card:hover .service-icon { background: var(--terracotta); }
+
+  .service-icon svg { width: 26px; height: 26px; color: var(--white); }
+
+  .service-name {
+    font-family: var(--font-display);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--ocean-deep);
+    margin-bottom: 0.75rem;
+    line-height: 1.25;
+  }
+
+  .service-desc {
+    font-size: 0.9rem;
+    color: var(--text-mid);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+  }
+
+  .service-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .service-items li {
+    font-size: 0.82rem;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .service-items li::before {
+    content: '—';
+    color: var(--terracotta);
+    font-weight: 500;
+  }
+
+  /* ===== WHY SECTION ===== */
+  .why { background: var(--ocean-deep); position: relative; overflow: hidden; }
+
+  .why::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -100px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91,163,191,0.12) 0%, transparent 70%);
+  }
+
+  .why .section-title { color: var(--white); }
+  .why .section-eyebrow { color: var(--sand); }
+  .why .section-eyebrow::before { background: var(--sand); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 1rem;
+  }
+
+  .why-body {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.85;
+    margin-bottom: 2rem;
+    max-width: 100%;
+  }
+
+  .pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .pillar {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    padding: 1.25rem;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    transition: background 0.25s;
+  }
+
+  .pillar:hover { background: rgba(255,255,255,0.08); }
+
+  .pillar-num {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--terracotta);
+    line-height: 1;
+    min-width: 40px;
+  }
+
+  .pillar-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 0.35rem;
+  }
+
+  .pillar-text {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+  }
+
+  .quote-block {
+    background: rgba(232,213,176,0.08);
+    border-left: 3px solid var(--sand);
+    padding: 2rem;
+    border-radius: 0 4px 4px 0;
+    margin-top: 1.5rem;
+  }
+
+  .quote-text {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-style: italic;
+    color: var(--sand);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .quote-attr {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: rgba(255,255,255,0.4);
+  }
+
+  /* ===== CONTACT ===== */
+  .contact { background: var(--cream); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 1rem;
+  }
+
+  .contact-info { padding-top: 0.5rem; }
+
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    margin-top: 2.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .contact-item-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--ocean-deep);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .contact-item-icon svg { width: 20px; height: 20px; color: var(--sand); }
+
+  .contact-item-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-light);
+    margin-bottom: 0.25rem;
+  }
+
+  .contact-item-value {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--ocean-deep);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .contact-item-value:hover { color: var(--terracotta); }
+
+  /* ===== FORM ===== */
+  .form-card {
+    background: var(--white);
+    border-radius: 4px;
+    padding: 2.5rem;
+    box-shadow: 0 2px 40px rgba(0,0,0,0.06);
+  }
+
+  .form-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ocean-deep);
+    margin-bottom: 0.4rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-group label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-mid);
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 0.85rem 1rem;
+    border: 1.5px solid #e0dbd0;
+    border-radius: 2px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    background: var(--cream);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--ocean-mid);
+    box-shadow: 0 0 0 3px rgba(46,110,142,0.12);
+  }
+
+  .form-group textarea { resize: vertical; min-height: 110px; }
+
+  .form-submit {
+    width: 100%;
+    background: var(--ocean-deep);
+    color: var(--white);
+    padding: 1.1rem 2rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.25s;
+    margin-top: 0.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .form-submit:hover {
+    background: var(--terracotta);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(194,107,71,0.3);
+  }
+
+  .form-submit:active { transform: translateY(0); }
+
+  .form-notice {
+    font-size: 0.75rem;
+    color: var(--text-light);
+    text-align: center;
+    margin-top: 1rem;
+    line-height: 1.5;
+  }
+
+  /* Success message */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .form-success.show { display: block; }
+
+  .success-icon {
+    width: 56px;
+    height: 56px;
+    background: var(--ocean-deep);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--ocean-deep);
+    padding: 3rem;
+    border-top: 3px solid var(--terracotta);
+  }
+
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .footer-logo-text {
+    font-family: var(--font-display);
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  .footer-logo-text span {
+    display: block;
+    font-size: 0.55rem;
+    font-family: var(--font-body);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--sand);
+    font-weight: 300;
+  }
+
+  .footer-tagline {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--sand);
+    text-align: center;
+  }
+
+  .footer-contact {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.35rem;
+  }
+
+  .footer-contact a {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-contact a:hover { color: var(--sand); }
+
+  .footer-bottom {
+    max-width: 1200px;
+    margin: 2rem auto 0;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .footer-copy {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.05em;
+  }
+
+  .vet-flag {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.05em;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .trust-bar { padding: 1rem 1.5rem; gap: 1.5rem; }
+    .about-grid, .why-grid, .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .services-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-inner { flex-direction: column; align-items: flex-start; }
+    .footer-contact { align-items: flex-start; }
+    .footer-bottom { flex-direction: column; }
+    .hero-content { padding: 7rem 1.5rem 5rem; }
+    .tile-grid { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <!-- Logo Mark: Wave + Hammer + Tile Grid -->
+    <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Tile grid background -->
+      <rect x="2" y="22" width="7" height="7" rx="1" fill="#5BA3BF" opacity="0.5"/>
+      <rect x="11" y="22" width="7" height="7" rx="1" fill="#5BA3BF" opacity="0.7"/>
+      <rect x="2" y="31" width="7" height="7" rx="1" fill="#5BA3BF" opacity="0.7"/>
+      <rect x="11" y="31" width="7" height="7" rx="1" fill="#E8D5B0" opacity="0.6"/>
+      <!-- Hammer head -->
+      <rect x="20" y="4" width="18" height="9" rx="2" fill="#C26B47"/>
+      <!-- Hammer handle -->
+      <rect x="26" y="12" width="4" height="16" rx="1.5" fill="#E8D5B0"/>
+      <!-- Wave -->
+      <path d="M2 18 Q7 13 12 18 Q17 23 22 18" stroke="#5BA3BF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div class="nav-logo-text">
+      Gulf Coast Craftsmanship
+      <span>Built Right. Built to Last.</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#why-us">Why Us</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+
+  <!-- Decorative tile grid -->
+  <div class="tile-grid">
+    <div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div>
+    <div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div>
+    <div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div>
+    <div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div>
+    <div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div><div class="tile-cell"></div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Veteran-Owned · Southwest Florida</div>
+    <h1 class="hero-heading">Gulf Coast<br><em>Craftsmanship</em></h1>
+    <p class="hero-sub">Built Right. Built to Last.</p>
+    <p class="hero-tagline">Premium tile work, flooring, and remodeling services delivered with military precision and the craftsmanship your home deserves.</p>
+    <div class="hero-ctas">
+      <a href="#contact" class="btn-primary">Request a Free Quote</a>
+      <a href="#services" class="btn-outline">Our Services</a>
+    </div>
+  </div>
+
+  <!-- Wave transition -->
+  <div class="hero-waves">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0 40 Q180 0 360 40 Q540 80 720 40 Q900 0 1080 40 Q1260 80 1440 40 L1440 80 L0 80 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    Veteran-Owned & Operated
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    Licensed & Insured
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    On-Time, Every Time
+  </div>
+  <div class="trust-item">
+    <svg class="trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    Southwest Florida Local
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-card">
+          <div class="vet-badge">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Veteran-Owned Business
+          </div>
+          <div class="about-card-title">Service to Country.<br><em>Now Service to Home.</em></div>
+          <p class="about-card-body">The discipline and attention to detail forged in military service don't stay on the base — they come to every job site, every tile set, and every finished floor we deliver.</p>
+          <div class="about-stats">
+            <div class="stat">
+              <span class="stat-num">100%</span>
+              <span class="stat-label">Satisfaction Goal</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">SW FL</span>
+              <span class="stat-label">Locally Rooted</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">Zero</span>
+              <span class="stat-label">Shortcuts Taken</span>
+            </div>
+            <div class="stat">
+              <span class="stat-num">1st</span>
+              <span class="stat-label">Call Resolution</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-content reveal">
+        <div class="section-eyebrow">Our Story</div>
+        <h2 class="section-title">Crafted for the<br><em>Gulf Coast</em></h2>
+        <p class="section-body">Gulf Coast Craftsmanship was built on a simple belief: every home deserves the same level of care and precision that goes into defending a country. We're a veteran-owned contracting company rooted in Southwest Florida, bringing military-grade discipline to every tile, floor, and renovation project we take on.</p>
+        <p class="section-body" style="margin-top:1rem;">We don't cut corners. We don't disappear mid-project. We show up, we communicate, and we deliver work that stands the test of time — and the Florida climate.</p>
+        <ul class="values-list">
+          <li>Precision craftsmanship on every square foot</li>
+          <li>Transparent pricing — no surprise invoices</li>
+          <li>Direct communication from quote to completion</li>
+          <li>Work that carries our name long after we leave</li>
+          <li>Locally trusted, veteran-built, community-focused</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">What We Do</div>
+      <h2 class="section-title">Three Service Lines.<br><em>One Standard of Excellence.</em></h2>
+    </div>
+    <div class="services-grid">
+
+      <!-- Service 1: Tile & Stone -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/>
+          </svg>
+        </div>
+        <h3 class="service-name">Tile & Stone Installation</h3>
+        <p class="service-desc">Precision tile setting for floors, walls, showers, and outdoor spaces. We work with porcelain, natural stone, mosaic, and large-format tile — all set to stand up to Florida's humidity and heat.</p>
+        <ul class="service-items">
+          <li>Bathroom & shower tile</li>
+          <li>Kitchen backsplashes</li>
+          <li>Flooring & entryways</li>
+          <li>Pool decks & patios</li>
+          <li>Large-format & custom patterns</li>
+        </ul>
+      </div>
+
+      <!-- Service 2: Flooring -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3 class="service-name">Flooring Solutions</h3>
+        <p class="service-desc">From luxury vinyl plank to hardwood and engineered flooring, we install and refinish floors that look stunning from day one and hold up for decades in Southwest Florida's coastal environment.</p>
+        <ul class="service-items">
+          <li>Luxury vinyl plank (LVP)</li>
+          <li>Hardwood installation & refinishing</li>
+          <li>Engineered wood flooring</li>
+          <li>Laminate & waterproof options</li>
+          <li>Subfloor prep & leveling</li>
+        </ul>
+      </div>
+
+      <!-- Service 3: Remodeling -->
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+          </svg>
+        </div>
+        <h3 class="service-name">Home Remodeling</h3>
+        <p class="service-desc">Full-scope interior renovation from design consultation to final walkthrough. We coordinate every trade, manage the timeline, and deliver a finished space that exceeds what you envisioned.</p>
+        <ul class="service-items">
+          <li>Kitchen remodels</li>
+          <li>Bathroom renovations</li>
+          <li>Interior room transformations</li>
+          <li>Drywall, paint & trim work</li>
+          <li>Project management & coordination</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why" id="why-us">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="reveal">
+        <div class="section-eyebrow">Why Gulf Coast</div>
+        <h2 class="section-title">The Veteran<br>Difference</h2>
+        <p class="why-body">In the military, there's no such thing as "good enough." You complete the mission to standard — every time, under any conditions. We brought that same ethos to contracting, and it shows in every job we finish.</p>
+
+        <div class="quote-block">
+          <p class="quote-text">"We treat your home the same way we treated our mission — with complete focus, zero tolerance for failure, and pride in the outcome."</p>
+          <p class="quote-attr">Gulf Coast Craftsmanship — Veteran-Owned, Southwest Florida</p>
+        </div>
+      </div>
+
+      <div class="pillars reveal">
+        <div class="pillar">
+          <div class="pillar-num">01</div>
+          <div>
+            <div class="pillar-title">Mission-Level Precision</div>
+            <p class="pillar-text">Military training demands exactness. We bring that same discipline to every measurement, every cut, and every installation — because "close enough" isn't in our vocabulary.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">02</div>
+          <div>
+            <div class="pillar-title">Transparent Communication</div>
+            <p class="pillar-text">No runaround, no excuses. You'll always know where your project stands, what it costs, and when it will be done. Straight answers from day one to final walkthrough.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">03</div>
+          <div>
+            <div class="pillar-title">Gulf Coast Expertise</div>
+            <p class="pillar-text">We know Southwest Florida — the humidity, the salt air, the seasonal demands. We specify materials and methods built for this climate so your investment lasts.</p>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-num">04</div>
+          <div>
+            <div class="pillar-title">Community Commitment</div>
+            <p class="pillar-text">We live here too. Supporting fellow veterans, hiring local, and giving back to the community we serve isn't marketing — it's how we do business.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="section-eyebrow">Get in Touch</div>
+        <h2 class="section-title">Let's Talk<br>About Your<br><em>Project</em></h2>
+        <p class="section-body" style="max-width:100%;">Ready to get started? Reach out and we'll schedule a free on-site consultation. No pressure, no sales pitch — just an honest conversation about your project and what it will take to do it right.</p>
+
+        <div class="contact-detail">
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.09h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 5.51 5.51l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16.92z"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Phone</div>
+              <a href="tel:+19414045127" class="contact-item-value">(941) 404-5127</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <a href="mailto:info@gccraftsmanship.com" class="contact-item-value">info@gccraftsmanship.com</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-item-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <div class="contact-item-label">Service Area</div>
+              <span class="contact-item-value" style="cursor:default;">Southwest Florida</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT FORM — forwards to info@gccraftsmanship.com via Formspree -->
+      <div class="reveal">
+        <div class="form-card">
+          <div id="formContent">
+            <h3 class="form-title">Request a Free Quote</h3>
+            <p class="form-subtitle">Fill out the form below and we'll get back to you within one business day.</p>
+
+            <!-- 
+              FORMSPREE SETUP: Replace YOUR_FORM_ID below with the ID from formspree.io
+              1. Go to formspree.io and sign up free
+              2. Create new form, set email to info@gccraftsmanship.com
+              3. Copy the form ID (looks like: xdkobpyz) and replace YOUR_FORM_ID
+            -->
+            <form id="contactForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+              <input type="hidden" name="_replyto" value="info@gccraftsmanship.com">
+              <input type="hidden" name="_subject" value="New Project Inquiry — Gulf Coast Craftsmanship">
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="fname">First Name *</label>
+                  <input type="text" id="fname" name="first_name" placeholder="John" required>
+                </div>
+                <div class="form-group">
+                  <label for="lname">Last Name *</label>
+                  <input type="text" id="lname" name="last_name" placeholder="Smith" required>
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="email">Email Address *</label>
+                  <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                  <label for="phone">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" placeholder="(941) 000-0000">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="service">Service Needed *</label>
+                <select id="service" name="service" required>
+                  <option value="" disabled selected>Select a service...</option>
+                  <option value="Tile & Stone Installation">Tile & Stone Installation</option>
+                  <option value="Flooring Solutions">Flooring Solutions</option>
+                  <option value="Home Remodeling">Home Remodeling</option>
+                  <option value="Multiple Services">Multiple Services</option>
+                  <option value="Not Sure Yet">Not Sure Yet — Need Consultation</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Tell Us About Your Project *</label>
+                <textarea id="message" name="message" placeholder="Describe your project, timeline, and any specific details that would help us prepare for your consultation..." required></textarea>
+              </div>
+
+              <button type="submit" class="form-submit" id="submitBtn">
+                Send My Request
+              </button>
+              <p class="form-notice">We respond within 1 business day. Your information is never shared or sold.</p>
+            </form>
+          </div>
+
+          <!-- Success State -->
+          <div class="form-success" id="formSuccess">
+            <div class="success-icon">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#E8D5B0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 class="form-title" style="margin-bottom:0.5rem;">Request Received!</h3>
+            <p style="font-size:0.9rem;color:var(--text-mid);line-height:1.7;">Thank you for reaching out. We'll review your project details and get back to you within one business day. In the meantime, feel free to call us directly at <a href="tel:+19414045127" style="color:var(--terracotta);font-weight:500;">(941) 404-5127</a>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="footer-logo">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" width="36" height="36">
+        <rect x="2" y="22" width="7" height="7" rx="1" fill="#5BA3BF" opacity="0.5"/>
+        <rect x="11" y="22" width="7" height="7" rx="1" fill="#5BA3BF" opacity="0.7"/>
+        <rect x="2" y="31" width="7" height="7" rx="1" fill="#5BA3BF" opacity="0.7"/>
+        <rect x="11" y="31" width="7" height="7" rx="1" fill="#E8D5B0" opacity="0.6"/>
+        <rect x="20" y="4" width="18" height="9" rx="2" fill="#C26B47"/>
+        <rect x="26" y="12" width="4" height="16" rx="1.5" fill="#E8D5B0"/>
+        <path d="M2 18 Q7 13 12 18 Q17 23 22 18" stroke="#5BA3BF" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="footer-logo-text">
+        Gulf Coast Craftsmanship
+        <span>Southwest Florida</span>
+      </div>
+    </a>
+
+    <div class="footer-tagline">"Built Right. Built to Last."</div>
+
+    <div class="footer-contact">
+      <a href="tel:+19414045127">(941) 404-5127</a>
+      <a href="mailto:info@gccraftsmanship.com">info@gccraftsmanship.com</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Gulf Coast Craftsmanship. All rights reserved.</span>
+    <span class="vet-flag">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="rgba(255,255,255,0.4)" stroke="none"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      Proudly Veteran-Owned & Operated · Naples, FL
+    </span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Nav scroll effect
+  window.addEventListener('scroll', () => {
+    document.querySelector('nav').style.padding = window.scrollY > 60 ? '0.8rem 3rem' : '1.2rem 3rem';
+  });
+
+  // Form submission with Formspree AJAX
+  const form = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Basic validation check
+    const formId = form.action.split('/f/')[1];
+    if (!formId || formId === 'YOUR_FORM_ID') {
+      // Fallback: open email client if Formspree not set up yet
+      const name = document.getElementById('fname').value + ' ' + document.getElementById('lname').value;
+      const email = document.getElementById('email').value;
+      const phone = document.getElementById('phone').value;
+      const service = document.getElementById('service').value;
+      const msg = document.getElementById('message').value;
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nService: ${service}\n\nProject Details:\n${msg}`);
+      window.location.href = `mailto:info@gccraftsmanship.com?subject=New Project Inquiry - Gulf Coast Craftsmanship&body=${body}`;
+      return;
+    }
+
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      });
+
+      if (response.ok) {
+        document.getElementById('formContent').style.display = 'none';
+        document.getElementById('formSuccess').classList.add('show');
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (err) {
+      submitBtn.textContent = 'Send My Request';
+      submitBtn.disabled = false;
+      alert('There was an issue sending your request. Please call us directly at (941) 404-5127 or email info@gccraftsmanship.com');
+    }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
